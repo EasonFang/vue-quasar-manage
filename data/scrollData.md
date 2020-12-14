@@ -12,7 +12,7 @@ components
 - 页面刷新或切换时记录滚动位置（如果页面不被```<keep-alive>```缓存则不会记录）
 
 因为我在百度统计里看到大家对这个组件的比较感兴趣，干脆直接在这里上源码和注释吧
-```js
+```html
 <template>
     <div class="main-content">
       <q-scroll-area
