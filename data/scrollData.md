@@ -19,7 +19,7 @@ components
         ref="scrollArea"
         :thumb-style="thumbStyle"
         :visible="false"
-        style="height: 100%"   // 请确保你的父节点的高度也是 100 %，设置为 100vh 的话在移动端会出问题。
+        style="height: 100%" 
       >
       <slot/>
       </q-scroll-area>
@@ -66,7 +66,6 @@ export default {
   // 当组件被 keep-alive 缓存时，切换路由会触发 deactivated 方法
   // 此时 this.$route.path 作为 key ，将滚动位置保存的 sessionStorage 中，
   deactivated () {
-    // 将 token 和当前 path 做成 key，记录滚动位置
     window.sessionStorage.setItem(this.pathTemp, JSON.stringify({ listScrollTop: this.getPosition() }))
   },
 
@@ -74,7 +73,6 @@ export default {
   // 此时从 sessionStorage 中获取滚动位置
   activated () {
     this.pathTemp = this.$route.path
-    // this.$route.path 做成 key，记录滚动位置
     const t = window.sessionStorage.getItem(this.$route.path)
     if (t) {
       const toPosition = JSON.parse(t)
